@@ -1,0 +1,10 @@
+module Multiplier (
+	reset,
+	clk
+);
+
+input reset;
+input clk;
+
+
+endmodule
