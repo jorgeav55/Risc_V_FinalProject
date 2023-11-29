@@ -28,7 +28,7 @@ assign write_data = 32'b0;
 // Memory initialization.
 
 initial begin
-   $readmemh("../Source/Test_Prog.txt", rom, 0, 29);
+   $readmemh("../Source/bubble_sort.hex", rom, 0, 29);
 end
   
 always @(posedge clk) begin
