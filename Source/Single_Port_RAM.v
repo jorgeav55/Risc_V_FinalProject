@@ -35,7 +35,7 @@ always @ (posedge clock)
 assign Q = (read_enable)?RAM[current_address]:32'b0;
 
 initial begin
-	$readmemh("../Source/MatXVec.dat", RAM, 0, 19);
+	$readmemh("../Source/RadonNum.dat", RAM, 0, 19);
 end
 
 endmodule

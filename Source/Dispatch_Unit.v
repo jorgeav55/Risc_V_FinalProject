@@ -223,7 +223,7 @@ Register
 	.data_in			(PC_plus_imm),
 	.dafault_data	({(DATA_WIDTH){1'b0}}),
 	.reset			(reset),
-	.enable			(branch),
+	.enable			(branch & ~branch_stall),
 	.flush			(1'b0),
 	.clk				(clk),
 	.data_out		(branch_address)

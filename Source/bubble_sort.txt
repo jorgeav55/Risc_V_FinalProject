@@ -1,0 +1,103 @@
+Address     Code        Basic                        Line Source
+
+0x00400000  0x00100093  addi x1,x0,1                 7    li x1, 1	#set register to its number
+0x00400004  0x00200113  addi x2,x0,2                 8    li x2, 2	#.
+0x00400008  0x00300193  addi x3,x0,3                 9    li x3, 3	#.
+0x0040000c  0x00400213  addi x4,x0,4                 10   li x4, 4	#.
+0x00400010  0x00500293  addi x5,x0,5                 11   li x5, 5
+0x00400014  0x00600313  addi x6,x0,6                 12   li x6, 6
+0x00400018  0x00700393  addi x7,x0,7                 13   li x7, 7
+0x0040001c  0x00800413  addi x8,x0,8                 14   li x8, 8
+0x00400020  0x00900493  addi x9,x0,9                 15   li x9, 9
+0x00400024  0x00a00513  addi x10,x0,10               16   li x10, 10
+0x00400028  0x00b00593  addi x11,x0,11               17   li x11, 11
+0x0040002c  0x00c00613  addi x12,x0,12               18   li x12, 12
+0x00400030  0x00d00693  addi x13,x0,13               19   li x13, 13
+0x00400034  0x00e00713  addi x14,x0,14               20   li x14, 14
+0x00400038  0x00f00793  addi x15,x0,15               21   li x15, 15
+0x0040003c  0x01000813  addi x16,x0,16               22   li x16, 16
+0x00400040  0x01100893  addi x17,x0,17               23   li x17, 17
+0x00400044  0x01200913  addi x18,x0,18               24   li x18, 18
+0x00400048  0x01300993  addi x19,x0,19               25   li x19, 19
+0x0040004c  0x01400a13  addi x20,x0,20               26   li x20, 20
+0x00400050  0x01500a93  addi x21,x0,21               27   li x21, 21
+0x00400054  0x01600b13  addi x22,x0,22               28   li x22, 22
+0x00400058  0x01700b93  addi x23,x0,23               29   li x23, 23
+0x0040005c  0x01800c13  addi x24,x0,24               30   li x24, 24
+0x00400060  0x01900c93  addi x25,x0,25               31   li x25, 25
+0x00400064  0x01a00d13  addi x26,x0,26               32   li x26, 26
+0x00400068  0x01b00d93  addi x27,x0,27               33   li x27, 27
+0x0040006c  0x01c00e13  addi x28,x0,28               34   li x28, 28
+0x00400070  0x01d00e93  addi x29,x0,29               35   li x29, 29
+0x00400074  0x01e00f13  addi x30,x0,30               36   li x30, 30
+0x00400078  0x01f00f93  addi x31,x0,31               37   li x31, 31	#set register to its number
+0x0040007c  0x00000033  add x0,x0,x0                 39   add   x0 , x0 , x0	#nop **initialization bubble sort
+0x00400080  0x00020fb3  add x31,x4,x0                40   add   x31, x4 , x0	#$31 = 4
+0x00400084  0x03f28133  mul x2,x5,x31                41   mul   x2 , x5 , x31	#j = 4 * items	
+0x00400088  0x100101b7  lui x3,0x00010010            42   lui   x3, 0x10010	#load address base to $3
+0x0040008c  0x00310133  add x2,x2,x3                 43   add  x2, x2, x3		#load last address
+0x00400090  0x00000033  add x0,x0,x0                 44   add   x0 , x0 , x0	#nop
+0x00400094  0x100101b7  lui x3,0x00010010            46   lui	x3, 0x10010	#load address base
+0x00400098  0x000181b3  add x3,x3,x0                 47   add   x3 , x3 , x0	
+0x0040009c  0x01f18233  add x4,x3,x31                48   add   x4 , x3 , x31	#load first address 1 item
+0x004000a0  0x00222333  slt x6,x4,x2                 49   slt   x6 , x4 , x2	#compare if both address are equal
+0x004000a4  0x02030a63  beq x6,x0,0x00000034         50   beq   x6 , x0 , CHECKER
+0x004000a8  0x0001a683  lw x13,0(x3)                 52   lw    x13, 0(x3)	#load first data to reg x13
+0x004000ac  0x00022703  lw x14,0(x4)                 53   lw    x14, 0(x4)	#load consecutive data to reg x14
+0x004000b0  0x00d72333  slt x6,x14,x13               54   slt   x6 , x14, x13	#compare both numbers
+0x004000b4  0x00030663  beq x6,x0,0x0000000c         55   beq   x6 , x0 , SKIP_SWAP#If not, go to swap
+0x004000b8  0x00e1a023  sw x14,0(x3)                 57   sw    x14, 0(x3)	#Swap data
+0x004000bc  0x00d22023  sw x13,0(x4)                 58   sw    x13, 0(x4)
+0x004000c0  0x01f181b3  add x3,x3,x31                60   add   x3 , x3 , x31	#add 4 to base address
+0x004000c4  0x01f20233  add x4,x4,x31                61   add   x4 , x4 , x31	#add 4 second base address
+0x004000c8  0x00222333  slt x6,x4,x2                 62   slt   x6 , x4 , x2	#compare second address with last address
+0x004000cc  0xfc130ee3  beq x6,x1,0xffffffdc         63   beq   x6 , x1 , LOAD	#if not, jump to load a new number
+0x004000d0  0x41f10133  sub x2,x2,x31                64   sub   x2 , x2 , x31	#sub last address - 4
+0x004000d4  0xfc1ff06f  jal x0,0xffffffc0            65   j     BEGIN		#go to begin
+0x004000d8  0x00000033  add x0,x0,x0                 67   add   x0 , x0 , x0	#nop to start checker for first 5 items
+0x004000dc  0x10010d37  lui x26,0x00010010           68   lui	x26, 0x10010	#load base address for 1st item
+0x004000e0  0x000d0d33  add x26,x26,x0               69   add   x26, x26 , x0	
+0x004000e4  0x01fd0db3  add x27,x26,x31              70   add   x27, x26, x31	#load address for second number
+0x004000e8  0x03f28e33  mul x28,x5,x31               71   mul   x28, x5 , x31	#mult 4 * num items 0 last address
+0x004000ec  0x01ae0e33  add x28,x28,x26              72   add   x28, x28, x26	#address x28 = fisrt item addr + last number addr
+0x004000f0  0x000d2e83  lw x29,0(x26)                74   lw    x29, 0(x26)	#load first number
+0x004000f4  0x000daf03  lw x30,0(x27)                75   lw    x30, 0(x27)	#load second number 
+0x004000f8  0x01df2cb3  slt x25,x30,x29              77   slt   x25, x30, x29	#compare if first < second (x25 = 0)
+0x004000fc  0x000c8463  beq x25,x0,0x00000008        78   beq   x25, x0 , SKIP_INFINITE_LOOP # if x25 = 0, go to next compare
+0x00400100  0xfe000ce3  beq x0,x0,0xfffffff8         79   beq x0, x0,  CHECKER_INFINITE_LOOP_COMPARE
+0x00400104  0x01fd0d33  add x26,x26,x31              81   add   x26, x26, x31	#add 4 1st base addr
+0x00400108  0x01fd8db3  add x27,x27,x31              82   add   x27, x27, x31	#add 4 2nd base addr
+0x0040010c  0x01cd8463  beq x27,x28,0x00000008       83   beq   x27, x28, NEXT_PROGRAM #is true after 4 comparisons
+0x00400110  0xfe1ff06f  jal x0,0xffffffe0            84   j CHECKER_ITERATION	#check next two pairs of numbers
+0x00400114  0x00000033  add x0,x0,x0                 87   add   x0 , x0 , x0	#nop to start program
+0x00400118  0x00000033  add x0,x0,x0                 89   add   x0 , x0 , x0	#nop
+0x0040011c  0x00028133  add x2,x5,x0                 90   add   x2 , x5 , x0	#set x2 with 5
+0x00400120  0x01f284b3  add x9,x5,x31                91   add   x9 , x5 , x31	#add 4 + 5 
+0x00400124  0x00148533  add x10,x9,x1                92   add   x10, x9 , x1	#add 9 +1
+0x00400128  0x00000333  add x6,x0,x0                 93   add   x6 , x0 , x0	#set x6 to 0
+0x0040012c  0x000281b3  add x3,x5,x0                 94   add   x3 , x5 , x0	#i = 5
+0x00400130  0x00118233  add x4,x3,x1                 96   add   x4 , x3 , x1	#j= i +1
+0x00400134  0x10010437  lui x8,0x00010010            97   lui   x8, 0x10010	#load base address
+0x00400138  0x03f186b3  mul x13,x3,x31               98   mul   x13, x3 , x31	# j * 4
+0x0040013c  0x008686b3  add x13,x13,x8               99   add  x13, x13, x8	#add base addr + addr first number
+0x00400140  0x0006ab83  lw x23,0(x13)                100  lw    x23, 0(x13)	#load 1st number
+0x00400144  0x00068633  add x12,x13,x0               101  add   x12, x13, x0	#x12 = first number addr
+0x00400148  0x000b8b33  add x22,x23,x0               102  add   x22, x23, x0	#x23 = fisrt number from memory
+0x0040014c  0x03f20733  mul x14,x4,x31               104  mul   x14, x4 , x31 	# j * 4	
+0x00400150  0x00870733  add x14,x14,x8               105  add   x14, x14, x8	# add base addr to mul
+0x00400154  0x00072c03  lw x24,0(x14)                106  lw    x24, 0(x14)	#load second number
+0x00400158  0x016c2333  slt x6,x24,x22               107  slt   x6 , x24, x22	#compare if first number < sencond number
+0x0040015c  0x00030663  beq x6,x0,0x0000000c         108  beq   x6 , x0 , SELECTION_SORT_SKIP 
+0x00400160  0x00070633  add x12,x14,x0               109  add   x12, x14, x0	#swap addr
+0x00400164  0x000c0b33  add x22,x24,x0               110  add   x22, x24, x0	#swap addr
+0x00400168  0x00120233  add x4,x4,x1                 112  add   x4 , x4 , x1	#j++
+0x0040016c  0x00a20463  beq x4,x10,0x00000008        113  beq   x4 , x10, SELECTION_SORT_SWAP #(j = 10)
+0x00400170  0xfddff06f  jal x0,0xffffffdc            114  j SELECTION_SORT_LOOP 	#if not
+0x00400174  0x00000033  add x0,x0,x0                 116  add   x0 , x0 , x0	#nop
+0x00400178  0x0166a023  sw x22,0(x13)                117  sw    x22, 0(x13)	#swap numbers, save in memory
+0x0040017c  0x01762023  sw x23,0(x12)                118  sw    x23, 0(x12)
+0x00400180  0x001181b3  add x3,x3,x1                 119  add   x3 , x3 , x1	#i++
+0x00400184  0x00118233  add x4,x3,x1                 120  add   x4 , x3 , x1	#j = i + 1
+0x00400188  0x00918463  beq x3,x9,0x00000008         121  beq   x3 , x9 , SELECTION_SORT_CHECKER #(i==9)
+0x0040018c  0xfa5ff06f  jal x0,0xffffffa4            122  j SELECTION_SORT_START	#if notset register to its number
+0x00400190  0x00000033  add x0,x0,x0                 124  add   x0, x0, x0

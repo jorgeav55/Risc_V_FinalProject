@@ -13,7 +13,7 @@ input 			[(ADDR_WIDTH-1):0]	addr;
 output	reg	[4*DATA_WIDTH-1:0]	data;
 
 //
-localparam ROM_Size = 64;
+localparam ROM_Size = 128;
 
 // ROM Variable Declaration
 reg [DATA_WIDTH-1:0] rom [ROM_Size-1:0];
@@ -28,7 +28,7 @@ assign write_data = 32'b0;
 // Memory initialization.
 
 initial begin
-   $readmemh("../Source/bubble_sort.hex", rom, 0, 29);
+   $readmemh("../Source/bubble_sort.hex", rom, 0, 250);
 end
   
 always @(posedge clk) begin
@@ -37,10 +37,10 @@ end
 
 always @* begin
 	if (enable) begin
-		data[4*DATA_WIDTH-1:3*DATA_WIDTH] = rom[addr[5:0]+3];
-		data[3*DATA_WIDTH-1:2*DATA_WIDTH] = rom[addr[5:0]+2];
-		data[2*DATA_WIDTH-1:  DATA_WIDTH] = rom[addr[5:0]+1];
-		data[  DATA_WIDTH-1:0           ] = rom[addr[5:0]  ];
+		data[4*DATA_WIDTH-1:3*DATA_WIDTH] = rom[addr[7:0]+3];
+		data[3*DATA_WIDTH-1:2*DATA_WIDTH] = rom[addr[7:0]+2];
+		data[2*DATA_WIDTH-1:  DATA_WIDTH] = rom[addr[7:0]+1];
+		data[  DATA_WIDTH-1:0           ] = rom[addr[7:0]  ];
 	end
 	else begin
 		data = {(4*DATA_WIDTH-1){1'b0}};
